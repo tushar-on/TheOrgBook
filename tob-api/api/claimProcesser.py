@@ -309,6 +309,9 @@ class ClaimProcesser(object):
       elapsed_time = time.time() - start_time
       self.__logger.debug('Claim elapsed time 2 >>> {}'.format(elapsed_time))
       start_time = time.time()
+      
+      #todo extra code added for testing, to be removed, line 298 shd get this value
+      verifiableOrg = self.__CreateOrUpdateVerifiableOrg(claim, verifiableOrg)
 
       # All claims following the initial 'incorporation.bc_registries' claim MUST have an legal_entity_id (or'corp_num') field to relate the claim to the business.
       # If a mathcing VerifiableOrg record does not exist at this point, reject the claim.
@@ -325,6 +328,14 @@ class ClaimProcesser(object):
       elapsed_time = time.time() - start_time
       self.__logger.debug('Claim elapsed time 4 >>> {}'.format(elapsed_time))
       start_time = time.time()
+      
+      self.__logger.debug("---------------------------------------before NEW code----------------------------")
+      # Process all other parsable claim types ...
+      if claim.schemaName == "doing_business_as.onbis":
+        doingBusinessAs = self.__CreateOrUpdateDoingBusinessAs(claim, verifiableOrg)
+        location = self.__CreateOrUpdateLocation(claim, verifiableOrg, doingBusinessAs, "Location")
+      elapsed_time = time.time() - start_time
+      self.__logger.debug('Claim elapsed time 5 >>> {}'.format(elapsed_time))
 
       # Process all other parsable claim types ...
       if claim.schemaName == "doing_business_as.bc_registries":
