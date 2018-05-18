@@ -4,7 +4,7 @@ SCRIPT_DIR=$(dirname $0)
 ENV_DIR=${SCRIPT_DIR}/../../tob-api/env
 
 if [[ ! -d ${ENV_DIR} ]]; then
-  PYTHON_EXE=python
+  PYTHON_EXE=python3
 else
   PYTHON_EXE=${ENV_DIR}/Scripts/python
 fi

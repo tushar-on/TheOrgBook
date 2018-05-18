@@ -28,7 +28,7 @@ parser.add_argument('--env', metavar='env', type=str, default='local',
                     help='Permitify and TheOrgBook services are on local/dev/test host')
 parser.add_argument('--inputdir', metavar='inputdir', type=str, default="Claims",
                     help='The directory containing JSON claims to be loaded')
-parser.add_argument('--prefix', metavar='prefix', type=str, default="",
+parser.add_argument('--prefix', metavar='prefix', type=str, default="Ont",
                     help='Prefix = Ont for Ontario')
 parser.add_argument('--threads', metavar='threads', type=int, default=1,
                     help='The number of threads to run for concurrent loading')
@@ -245,6 +245,7 @@ def main_load(env, do_it_random, num_loops, thread_id):
                         claim['address_line_2'] = ""
 
                         print('\n\nSubmitting Claim:\n\n{}'.format(claim))
+                        
 
                         if env == 'wallet':
                             legal_entity_id = "da0" + random_string(thread_id) + random_string(thread_id) + random_string(thread_id)
@@ -282,7 +283,7 @@ def main_load(env, do_it_random, num_loops, thread_id):
                                     json=claim
                                 )
                                 loop_locks[service_name].release()
-                                print(response)
+                                print(env,service_name,URLS[env][service_name],claim,response)
                                 
                                 print("Submitting claim to {} ...".format(response.url))
                                 result_json = response.json()

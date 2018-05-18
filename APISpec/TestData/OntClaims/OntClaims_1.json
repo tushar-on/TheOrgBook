@@ -1,15 +1,33 @@
 {
     "OntarioReg": [
         {
-            "address_line_1": "1183 Gorham Street",
+            "legal_entity_id": "11112",
+            "corp_num": "1234512",
+            "org_type": "A",
+            "legal_name": "Registered Name12",
+            "address_line_1": "63 PANDORA CIR.",
             "address_line_2": "",
-            "addressee": "Gilbert Schroeder",
-            "city": "London",
+            "addressee": "",
+            "city": "SCARBOROUGH",
             "country": "CA",
-            "legal_name": "Schroeder Dive",
-            "postal_code": "N0N 0N0",
+            "postal_code": "M1H 1V6",
             "province": "ON",
             "schema": "incorporation.onbis"
+        },
+
+        {
+            "legal_entity_id": "11112",
+            "corp_num": "1234512",
+            "legal_name": "Registered Name12",
+            "doing_business_as_name": "XYZ Company12",
+            "address_line_1": "One Drive",
+            "address_line_2": "",
+            "addressee": "",
+            "city": "SCARBOROUGH",
+            "country": "CA",
+            "postal_code": "M1H 2P5",
+            "province": "ON",
+            "schema": "doing_business_as.onbis"
         }
     ]
 }
